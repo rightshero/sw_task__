@@ -1,3 +1,6 @@
+![alt text](https://rightshero.com/public/assets/pp-assets/images/rh-logo.png)
+
+
 # Software Engineer Task Assessment
 
 This role will be part of the Rightshero software development team.
