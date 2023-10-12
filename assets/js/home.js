@@ -16,22 +16,22 @@ function constructTree(parent) {
     }
 
     if (data[parent.val.id].length !== 0) {
-        parent.left = constructTree(new TreeNode({"id":data[parent.val.id][0].id, "type":data[parent.val.id][0].type}))
-        parent.right = constructTree(new TreeNode({"id":data[parent.val.id][1].id, "type":data[parent.val.id][1].type}))
+        parent.left = constructTree(new TreeNode({ "id": data[parent.val.id][0].id, "type": data[parent.val.id][0].type }))
+        parent.right = constructTree(new TreeNode({ "id": data[parent.val.id][1].id, "type": data[parent.val.id][1].type }))
     }
     return parent
 }
 
 // root with -1 value to grab the root nodes from the dictionary
 function getRootNode(server_data) {
-    let root = new TreeNode({id:"None",type:"dummy"})
+    let root = new TreeNode({ id: "None", type: "dummy" })
     return constructTree(root, server_data)
 }
 
 
 
-function handleClick(checked,has_child,id) {
-    if (checked && has_child ) {
+function handleClick(checked, has_child, id) {
+    if (checked && has_child) {
         console.log("checked")
     }
     else if (has_child) {
@@ -44,26 +44,26 @@ function handleClick(checked,has_child,id) {
 }
 
 // pre-order traversal to render the tree of checkboxes
-function preOrderRenderData(parent_container, root ,level = -1, content = "") {
+function preOrderRenderData(parent_container, root, level = -1, content = "") {
 
     if (root == null) {
         return
     }
 
     // helper function to build checkbox and return the container and the content e.g. (A-1-1-1) as a string
-    const [container , Content] = buildCheckbox(root.val.id,root.val.type,level,content,parent_container)
+    const [container, Content] = buildCheckbox(root.val.id, root.val.type, level, content, parent_container)
 
-    
+
 
     container.addEventListener('click', function (e) {
         let has_child = root.left !== null || root.right !== null
         let checked = e.target.checked
         let id = root.val.id
-        handleClick(checked,has_child,id)
+        handleClick(checked, has_child, id)
     })
 
-    preOrderRenderData(container, root.left ,level + 1 , Content+"-1")
-    preOrderRenderData(container, root.right, level + 1 ,Content+"-2")
+    preOrderRenderData(container, root.left, level + 1, Content + "-1")
+    preOrderRenderData(container, root.right, level + 1, Content + "-2")
 }
 
 
@@ -116,7 +116,7 @@ function handleDelete() {
 
 
 // helper function to build checkbox and return the container and the content e.g. (A-1-1-1) as a string
-function buildCheckbox(id,type,level,content,parent_container){
+function buildCheckbox(id, type, level, content, parent_container) {
     let container = document.createElement('div')
     container.classList.add('sub-container')
     container.classList.add('form-check')
@@ -143,12 +143,12 @@ function buildCheckbox(id,type,level,content,parent_container){
         content = type === "1" ? 'A' : 'B';
     }
     else if (level === 1) {
-        input.textContent = type === "1" ? content[0]+'1' : content[0]+'2';
-        content = type === "1" ? content[0] +'1' : content[0] +'2';
+        input.textContent = type === "1" ? content[0] + '1' : content[0] + '2';
+        content = type === "1" ? content[0] + '1' : content[0] + '2';
     }
     label.textContent = content;
 
-    return [container , content]
+    return [container, content]
 
 }
 

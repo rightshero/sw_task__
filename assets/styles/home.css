@@ -2,9 +2,10 @@
     min-height: 800px;
 }
 
-.sub-container{
-    padding: 8px 0px 0px 32px ;
+.sub-container {
+    padding: 8px 0px 0px 32px;
 }
-.hide{
+
+.hide {
     display: none;
 }

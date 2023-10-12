@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'corsheaders',
     # LOCAL APPS
+    'sw_task',
 ]
 
 MIDDLEWARE = [
