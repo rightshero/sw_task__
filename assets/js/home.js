@@ -62,8 +62,8 @@ function preOrderRenderData(parent_container, root, level = -1, content = "") {
         handleClick(checked, has_child, id)
     })
 
-    preOrderRenderData(container, root.left, level + 1, Content + "-1")
-    preOrderRenderData(container, root.right, level + 1, Content + "-2")
+    preOrderRenderData(container, root.left, level + 1, "SUB "+Content + "-1")
+    preOrderRenderData(container, root.right, level + 1, "SUB "+Content + "-2")
 }
 
 
@@ -144,8 +144,10 @@ function buildCheckbox(id, type, level, content, parent_container) {
     }
     else if (level === 1) {
         input.textContent = type === "1" ? content[0] + '1' : content[0] + '2';
-        content = type === "1" ? content[0] + '1' : content[0] + '2';
+        content = type === "1" ? content[4] + '1' : content[4] + '2';
+        content = 'SUB ' + content
     }
+
     label.textContent = content;
 
     return [container, content]

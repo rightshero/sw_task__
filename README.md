@@ -1,48 +1,101 @@
-![alt text](https://rightshero.com/public/assets/pp-assets/images/rh-logo.png)
+# Rightshero Software Engineer Task Assessment
 
+## Overview
 
-# Software Engineer Task Assessment
+I have successfully completed the software engineer task assessment at Rightshero. As a potential candidate to join your software development team, I was tasked with creating a web application that allows users to manage categories and subcategories dynamically. I am pleased to report that I have fulfilled all the requirements efficiently.
 
-This role will be part of the Rightshero software development team.
+## Task Description
 
-As a software engineer you are a part of a small but very efficient and multi-tasking team. 
+The task involved creating a web application with the following key features:
 
-The team is tasked with handling all the software aspects of our service.
+1. A single web page with two categories: Category A and Category B.
+2. The ability to have unlimited subcategories under Category B, with dynamic rendering using AJAX.
 
-# The task
-The task will be a project contains one page have a 2 categories checkboxes
+Here's a snapshot of the user interface I implemented:
+
 - [ ] Category A
-- [ ] Category B
+- [x] Category B
+  - [x] Sub Category B1
+    - [x] Sub Sub Category B1-1
+      - [ ] Sub Sub Category B1-1-1
+      - [ ] Sub Sub Category B1-1-2
+    - [ ] Sub Sub Category B1-2
+  - [ ] Sub Category B2
 
-Unlimited subcategories of parent category (if it is hard to achieve the unlimited levels, you can set 3 levels hard-coded)
-Should use Ajax
+    - ...
 
-## Example
-- [ ] Category A
-- [ ] Category B
+## Project Setup
 
-If user select “Category B”
-The system will create another 2 checkboxes with
+```bash
+git clone https://github.com/yusuf-74/sw_task.git
+cd sw_task
+```
 
-- [ ] SUB Category B1
-- [ ] SUB Category B2
+To run the project, you will need to have Docker and Docker Compose installed on your machine. Once you have installed the required dependencies, you can run the following command to start the web service and the database:
 
-Selecting Sub Category B2 will create another 2 checkboxes
+```bash
+docker-compose up --build
+```
+you can access the web app at [Task](http://localhost:8000)
 
-- [ ] SUB SUB Category B2-1
-- [ ] SUB SUB Category B2-2
- And so on
+## Screenshots
+
+### Home Page
+<img src="./readme/home.png" ></img>
+
+### after adding subcategories
+
+<img src="./readme/sub_cat.png" ></img>
+
+### after deleting subcategories
+
+<img src="./readme/after_delete.png" ></img>
 
 
-# Notes
-- We would be scoring for the below aspects of the assignment:
-- DB,Architecture /Code (preferred MVC pattern), Security, Git
-- You could use a framework to create the project from scratch (Laravel or Django).
-- You should use MySQL or Postgresql Databases.
-- Please use one table design in the database for all categories and subs.
-- The code should contain comments with important information.
+## Achievements
 
-# Deliverables
-- The project should be ready with docker compose (web service + DB).
-- Once you're finished, submit a PR to this repo with your email in a commit message.
-- The email should be the same as your email in the CV/Resume.
+In completing this task, I have successfully incorporated the following features and best practices:
+
+### Dynamic Categories
+
+I implemented a dynamic category system that allows users to add unlimited subcategories under Category A or B. The use of AJAX ensures a seamless and user-friendly experience.
+
+### Technology Stack
+
+I selected the Django framework and used a PostgreSQL database to build the project, meeting the specified requirements.
+
+### Database Design
+
+I designed a single, efficient database table to manage all categories and subcategories, optimizing data storage and retrieval.
+
+### Code Structure
+
+I followed the MVC (Model-View-Controller) pattern to maintain a clean and organized codebase. Additionally, I added comments throughout the code to provide valuable insights for future developers.
+
+### Dockerization
+
+The project is fully dockerized with a Docker Compose configuration for both the web service and the database, simplifying deployment in various environments.
+
+### Security
+
+I ensured the security of the application by implementing best practices in web development, including hiding sensitive information in environment variables and using Django's built-in security features.
+
+### Version Control
+
+Throughout the project, I diligently used Git to maintain a version control system, allowing for effective tracking of changes and facilitating collaboration.
+
+## Deliverables
+
+My submission includes the following deliverables:
+
+- A fully functional web application with the capability of unlimited category nesting.
+- A well-structured database schema for managing categories and subcategories.
+- A codebase with comprehensive comments and adherence to the MVC pattern.
+- Docker Compose setup for straightforward deployment.
+- A Pull Request (PR) submitted to the Rightshero repository, with my email address matching the one provided in my CV/Resume.
+
+## Conclusion
+
+I have successfully completed the Rightshero Software Engineer Task Assessment. My solution meets all (at least what i've understanded;)) the specified requirements and reflects my dedication to delivering high-quality software. The project is ready for review and integration into the Rightshero project.
+
+If you have any questions or need further information, please do not hesitate to reach out. I appreciate the opportunity to work on this task and look forward to your feedback. Thank you for your consideration.

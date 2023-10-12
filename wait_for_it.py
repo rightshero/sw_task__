@@ -11,7 +11,7 @@ def check_database():
         'database': config('POSTGRES_NAME'),
     }
 
-    max_attempts = 3
+    max_attempts = 10
     delay = 5
 
     for attempt in range(1, max_attempts + 1):
