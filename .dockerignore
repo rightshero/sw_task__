@@ -1,0 +1,2 @@
+# Ignore all files and directories that are not needed for the Docker image
+.venv/
