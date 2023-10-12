@@ -29,6 +29,7 @@ if settings.DEBUG:
 
 urlpatterns += [
     path('admin/', admin.site.urls),
+    path('', include('sw_task.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
