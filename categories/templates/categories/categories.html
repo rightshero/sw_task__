@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Categories</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/categories.css' %}"
+    />
+  </head>
+  <body>
+    <div class="category-container">
+      <h1>Categories</h1>
+      <ul class="category-list">
+        {% for category in categories %}
+        <li class="category">
+          <label for="category-{{ category.id }}">{{ category.name }}</label>
+          <input
+            type="checkbox"
+            id="category-{{ category.id }}"
+            name="category"
+            value="{{ category.name }}"
+          />
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <script src="{% static 'js/categories.js' %}"></script>
+  </body>
+</html>

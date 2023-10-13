@@ -1,0 +1,29 @@
+/* Apply styles to the category container */
+.category-container {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+}
+
+/* Style the category list */
+.category-list {
+  list-style: none;
+  padding: 0;
+}
+
+/* Style checkboxes and labels */
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+label {
+  cursor: pointer;
+}
+
+/* Style the h1 element */
+h1 {
+  font-size: 24px;
+  margin: 10px 0;
+}
