@@ -19,7 +19,18 @@ docker-compose build
 ```
 docker-compose up
 ```
-5-The application is now running, and you can access it in your web browser at [localhost:8000](http://127.0.0.1:8000/)
+- 5- The application is now running, and you can access it in your web browser at [localhost:8000](http://127.0.0.1:8000/)
+- 6- You can access the admin panel at [localhost:8000/admin]((http://127.0.0.1:8000/). I've created a ready superuser with the following credentials:
+  - Username: admin
+  - Password: admin
+- 7- Alternatively, you can create a new superuser for a better overview of the application and database. Use the following command: Please note that you should run this command in another terminal while the application is running
+```
+docker-compose run web python manage.py createsuperuser
+```
+- 8- Accessing the Admin Panel will allow you to have a better overview over the DB and create as many parent categories as needed ( a parent category is a category with no parent ) and see the generated subcategories.
+- 9- I've also created two parent categories to get you started with trying out the app right away.
+     
+
 
 # Technology Stack
 
