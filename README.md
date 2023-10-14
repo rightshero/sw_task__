@@ -9,13 +9,13 @@ and implementing robust security measures through middlewares.
 # Installation & Usage
 To set up the project and run it locally, follow these steps:
 
-1-Clone this repository to your local machine
-2-Access the Dockerfile in the project directory.
-3-Build the Docker container by running the following command:
+- 1- Clone this repository to your local machine
+- 2- Access the Dockerfile in the project directory.
+- 3- Build the Docker container by running the following command:
 ```
 docker-compose build
 ```
-4-Once the build process is complete, start the container using the following command:
+- 4- Once the build process is complete, start the container using the following command:
 ```
 docker-compose up
 ```
