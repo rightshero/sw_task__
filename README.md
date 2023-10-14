@@ -1,48 +1,67 @@
-![alt text](https://rightshero.com/public/assets/pp-assets/images/rh-logo.png)
-
-
 # Software Engineer Task Assessment
 
-This role will be part of the Rightshero software development team.
+# Overview
 
-As a software engineer you are a part of a small but very efficient and multi-tasking team. 
+This project represents the successful completion of the Rightshero Software Engineer Task Assessment.
+I've crafted a dynamic category selection system that utilizing Postgresql as the database, adhering to the MVC pattern,
+and implementing robust security measures through middlewares.
 
-The team is tasked with handling all the software aspects of our service.
+# Installation & Usage
+To set up the project and run it locally, follow these steps:
 
-# The task
-The task will be a project contains one page have a 2 categories checkboxes
-- [ ] Category A
-- [ ] Category B
+1-Clone this repository to your local machine
+2-Access the Dockerfile in the project directory.
+3-Build the Docker container by running the following command:
+```
+docker-compose build
+```
+4-Once the build process is complete, start the container using the following command:
+```
+docker-compose up
+```
+5-The application is now running, and you can access it in your web browser at [localhost:8000](http://127.0.0.1:8000/)
 
-Unlimited subcategories of parent category (if it is hard to achieve the unlimited levels, you can set 3 levels hard-coded)
-Should use Ajax
+# Technology Stack
 
-## Example
-- [ ] Category A
-- [ ] Category B
+This app is built using the following technologies:
 
-If user select “Category B”
-The system will create another 2 checkboxes with
+- **Django**: A Python web framework.
 
-- [ ] SUB Category B1
-- [ ] SUB Category B2
+- **PostgreSQL**: A relational database management system.
 
-Selecting Sub Category B2 will create another 2 checkboxes
+# Deployment and Infrastructure
 
-- [ ] SUB SUB Category B2-1
-- [ ] SUB SUB Category B2-2
- And so on
+- **Docker**:  The application is containerized using Docker, providing an efficient and consistent deployment environment.
 
+## Database Design
 
-# Notes
-- We would be scoring for the below aspects of the assignment:
-- DB,Architecture /Code (preferred MVC pattern), Security, Git
-- You could use a framework to create the project from scratch (Laravel or Django).
-- You should use MySQL or Postgresql Databases.
-- Please use one table design in the database for all categories and subs.
-- The code should contain comments with important information.
+This project's database design follows a simple and efficient approach to accommodate an unlimited level of 
+subcategories for a parent category. I achieve this by using a single table with a foreign key relationship to itself.
 
-# Deliverables
-- The project should be ready with docker compose (web service + DB).
-- Once you're finished, submit a PR to this repo with your email in a commit message.
-- The email should be the same as your email in the CV/Resume.
+This design allows for a parent category to have multiple subcategories, and subcategories can, in turn, have their 
+own subcategories, creating a hierarchy of categories with an unlimited number of levels.
+
+By using this self-referencing foreign key relationship, the database can efficiently represent and retrieve
+hierarchical category structures.
+
+# Security
+
+While this application may not include user authentication, I've implemented several security measures to ensure its 
+robustness and protect against common web security threats. Here are some of the security middlewares 
+provided by Django that I've utilized:
+
+- **SecurityMiddleware:** This middleware helps enforce several security best practices.
+
+- **SessionMiddleware:** Although there's no user authentication in this simple app, SessionMiddleware is used to manage user sessions securely. It ensures that session data is stored securely and handles session management.
+
+- **CommonMiddleware:** CommonMiddleware provides security features such as clickjacking protection and secure HTTP headers.
+
+- **CsrfViewMiddleware:** Cross-Site Request Forgery (CSRF) protection, even in applications without user authentication. CsrfViewMiddleware safeguards against CSRF attacks by adding a unique token to forms and ensuring that form submissions match this token.
+
+- **XFrameOptionsMiddleware:** This middleware helps prevent clickjacking attacks by setting X-Frame-Options headers, which control whether the application can be embedded in an iframe.
+
+By incorporating these security middlewares, I've taken steps to fortify the application's security posture, making it resilient to a range of common web vulnerabilities.
+
+# Conclusion
+
+Thank you for reviewing my Rightshero Software Engineer Task Assessment. I look forward to your feedback and appreciate the opportunity to demonstrate our skills.

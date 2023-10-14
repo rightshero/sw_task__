@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Category Hierarchy</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #359;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin: 5px 0;
+        }
+        input.category,
+        input.subcategory {
+            margin-right: 5px;
+        }
+        .subcategory-list {
+            margin-left: 20px;
+        }
+    </style>
+    <style>
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+    ul li {
+        margin: 10px 0;
+    }
+<!--    input.category {-->
+<!--        margin-right: 5px;-->
+<!--        appearance: none;-->
+<!--        -webkit-appearance: none;-->
+<!--        -moz-appearance: none;-->
+<!--        border: 2px solid #3498db;-->
+<!--        border-radius: 5px;-->
+<!--        width: 20px;-->
+<!--        height: 20px;-->
+<!--        cursor: pointer;-->
+<!--    }-->
+    input.category:checked {
+        background-color: #3498db;
+    }
+    .category-label, .subcategory-label {
+        display: inline-block;
+        vertical-align: middle;
+        color: #333;
+        font-weight: bold;
+        font-size: 16px;
+    }
+    .subcategory-list {
+        padding-left: 20px;
+    }
+</style>
+</head>
+<body>
+<h1>Categories</h1>
+<ul>
+<!--  categories here is the checked box and not the parent categories, each subcategory checkbox is created with
+      an empty list subcategories and when it's clicked these subcategories are calculated from the api host/get_subcategories/
+      and bec of ajax the updates happens on the spot-->
+    {% for category in categories %}
+    <li>
+        <input type="checkbox" class="category" data-id="{{ category.id }}"/> {{ category.name }}
+        <ul class="subcategory-list"></ul>
+    </li>
+    {% endfor %}
+</ul>
+<script>
+        $(document).ready(function () {
+            $(document).on('change', '.category, .subcategory', function () {
+                var category_id = $(this).data('id');
+                var subcategoryList = $(this).siblings('.subcategory-list');
+                if (this.checked) {
+                    $.get('/get_subcategories/', { category_id: category_id }, function (data) {
+                        subcategoryList.empty();
+                        $.each(data, function (index, subcategory) {
+                            subcategoryList.append('<li><input type="checkbox" class="subcategory" data-id="' + subcategory.id + '"/>' + subcategory.name + '<ul class="subcategory-list"></ul> </li>');
+                        });
+                    });
+                } else {
+                    subcategoryList.empty();
+                }
+            });
+        });
+
+</script>
+</body>
+</html>

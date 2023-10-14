@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    command: ["sh", "./start.sh"]
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    depends_on:
+      - postgres_db
+  postgres_db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: rightshero
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
