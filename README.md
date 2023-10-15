@@ -73,6 +73,13 @@ provided by Django that I've utilized:
 
 By incorporating these security middlewares, I've taken steps to fortify the application's security posture, making it resilient to a range of common web vulnerabilities.
 
+# Testing
+
+- TestCase class is used to wright unit testing for the views. and you can run tests by using the command:
+```
+docker-compose run web python manage.py test categories_app
+```
+
 # Conclusion
 
 Thank you for reviewing my Rightshero Software Engineer Task Assessment. I look forward to your feedback and appreciate the opportunity to demonstrate our skills.
