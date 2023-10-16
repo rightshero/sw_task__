@@ -1,48 +1,63 @@
 ![alt text](https://rightshero.com/public/assets/pp-assets/images/rh-logo.png)
 
+# Overview:
 
-# Software Engineer Task Assessment
+This project is a part of the Rightshero software development team's efforts to handle various software aspects of their service. As a software engineer, the task assigned was to create a dynamic web application with a category and subcategory selection system. The objective was to allow users to choose from a set of categories and subcategories in a user-friendly and interactive manner.
 
-This role will be part of the Rightshero software development team.
+![Alt text](image.png)
+![Alt text](image-1.png)
+![Alt text](image-2.png)
 
-As a software engineer you are a part of a small but very efficient and multi-tasking team. 
+# Project Structure:
 
-The team is tasked with handling all the software aspects of our service.
+sw_task/
+├── .dockerignore
+├── .env
+├── .gitignore
+├── commands.txt
+├── docker-compose.yml
+├── Dockerfile
+├── manage.py
+├── requirements.txt
+├── wait_for_db.py
+├── base/
+│ ├── asgi.py
+│ ├── settings.py
+│ ├── urls.py
+│ ├── wsgi.py
+│ ├── **init**.py
+│ └── **pycache**/
+├── categories/
+│ ├── admin.py
+│ ├── apps.py
+│ ├── models.py
+│ ├── tests.py
+│ ├── urls.py
+│ ├── views.py
+│ ├── **init**.py
+│ ├── migrations/
+│ ├── templates/
+│ │ ├── categories.html
+│ │ └── stuff/
+│ │ ├── footer.html
+│ │ ├── head.html
+│ │ └── index.html
+│ ├── static/
+│ ├── css/
+│ │ ├── main.css
+│ ├── images/
+│ │ ├── rightshero.png
+│ ├── js/
+│ ├── func.js
+├── venv/
 
-# The task
-The task will be a project contains one page have a 2 categories checkboxes
-- [ ] Category A
-- [ ] Category B
+## Getting Started
 
-Unlimited subcategories of parent category (if it is hard to achieve the unlimited levels, you can set 3 levels hard-coded)
-Should use Ajax
+> git clone https://github.com/Abdelrhmantarek/sw_task.git
+> cd sw_task
 
-## Example
-- [ ] Category A
-- [ ] Category B
-
-If user select “Category B”
-The system will create another 2 checkboxes with
-
-- [ ] SUB Category B1
-- [ ] SUB Category B2
-
-Selecting Sub Category B2 will create another 2 checkboxes
-
-- [ ] SUB SUB Category B2-1
-- [ ] SUB SUB Category B2-2
- And so on
-
+> docker-compose up --build
 
 # Notes
-- We would be scoring for the below aspects of the assignment:
-- DB,Architecture /Code (preferred MVC pattern), Security, Git
-- You could use a framework to create the project from scratch (Laravel or Django).
-- You should use MySQL or Postgresql Databases.
-- Please use one table design in the database for all categories and subs.
-- The code should contain comments with important information.
 
 # Deliverables
-- The project should be ready with docker compose (web service + DB).
-- Once you're finished, submit a PR to this repo with your email in a commit message.
-- The email should be the same as your email in the CV/Resume.
