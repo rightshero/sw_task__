@@ -20,7 +20,7 @@ docker-compose build
 docker-compose up
 ```
 - 5- The application is now running, and you can access it in your web browser at [localhost:8000](http://127.0.0.1:8000/)
-- 6- You can access the admin panel at [localhost:8000/admin](http://127.0.0.1:8000/). I've created a ready superuser with the following credentials:
+- 6- You can access the admin panel at [localhost:8000/admin](http://127.0.0.1:8000/admin). I've created a ready superuser with the following credentials:
   - Username: admin
   - Password: admin
 - 7- Alternatively, you can create a new superuser for a better overview of the application and database. Use the following command: Please note that you should run this command in another terminal while the application is running
