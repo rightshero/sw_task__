@@ -1,0 +1,46 @@
+<!-- Extend the base template 'index.html' -->
+{% extends 'stuff/index.html' %} {% load static %}
+<!-- Define the content block for the navbar -->
+{% block navbar %}
+<!-- Navbar section, including the logo and title -->
+<nav class="navbar">
+  <div class="navbar-logo">
+    <!-- Add your logo here -->
+    <img src="{% static 'images/rightshero.png' %}" alt="company_logo" />
+  </div>
+  <div class="navbar-title">
+    <!-- Display the title "Categories" -->
+    <h1>Categories</h1>
+  </div>
+</nav>
+{% endblock %}
+
+<!-- Define the content block for the body content -->
+{% block content %}
+<div class="content">
+  <!-- Create an unordered list with the ID 'category-tree' -->
+  <ul id="category-tree">
+    <!-- Include a CSRF token for form security -->
+    {% csrf_token %}
+    <!-- Loop through the categories passed from the view -->
+    {% for category in categories %}
+    <!-- Create a list item for each category -->
+    <li>
+      <input
+        type="checkbox"
+        name="category"
+        value="{{ category.id }}"
+        data-level="{{ category.level }}"
+      />
+      <!-- Display the category name -->
+      <span> {{ category.name }} </span>
+      <ul class="subcategory-list">
+        <!-- Subcategories will be added here -->
+      </ul>
+    </li>
+    <!-- End of the loop through categories -->
+    {% endfor %}
+    <!-- End of the unordered list 'category-tree' -->
+  </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  # Django web application
+  web:
+    build: .
+    command: >
+      sh -c "
+             python wait_for_db.py &&
+             python manage.py makemigrations &&
+             python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000
+            "
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DJANGO_DB_HOST=${DJANGO_DB_HOST}
+      - DJANGO_DB_PORT=${DJANGO_DB_PORT}
+      - DJANGO_DB_NAME=${DJANGO_DB_NAME}
+      - DJANGO_DB_USER=${DJANGO_DB_USER}
+      - DJANGO_DB_PASSWORD=${DJANGO_DB_PASSWORD}
+
+  # PostgreSQL database
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"

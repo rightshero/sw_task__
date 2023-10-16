@@ -1,0 +1,17 @@
+<!-- Define the document type as HTML5 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Include the content of 'head.html' in the head section -->
+    {% include './head.html' %}
+  </head>
+  <body>
+    <!-- Include the navbar content block -->
+    {% block navbar %}{% endblock %}
+    <!-- Include the body content block -->
+    {% block content %} {% endblock %}
+
+    <!-- Include the footer content block -->
+    {% include './footer.html' %}
+  </body>
+</html>

@@ -1,0 +1,107 @@
+/* Set the font family and background color for the entire page */
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Style for the navigation bar (nav) */
+.navbar {
+  background: #b2fefa; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    #0ed2f7,
+    #b2fefa
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    #0ed2f7,
+    #b2fefa
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* Three equal columns */
+  align-items: center;
+  padding: 10px 20px;
+}
+
+/* Style for the logo image */
+.navbar-logo img {
+  max-height: 60px;
+}
+
+/* Style for the main heading (h1) */
+.navbar-title h1 {
+  color: #000;
+  margin: 0;
+  font-size: 29px;
+  font-weight: 600;
+  padding: 0;
+  text-align: center; /* Center the text in the middle grid */
+}
+
+/* Styling for the element with the ID 'category-tree' */
+#category-tree {
+  list-style: none; /* Remove default list styles */
+  padding: 0;
+  margin: 20px;
+}
+
+/* Styling for list items within 'category-tree' */
+#category-tree li {
+  margin: 10px 0;
+  border: 1px solid #ccc; /* Border style */
+  background-color: #fff; /* Background color */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px; /* Spacing inside list items */
+}
+
+/* Styling for checkboxes within list items */
+#category-tree li input[type="checkbox"] {
+  margin-right: 10px; /* Spacing between checkboxes and text */
+}
+
+/* Styling for elements with the class 'subcategory-list' */
+.subcategory-list {
+  list-style: none; /* Remove default list styles */
+  padding: 0;
+}
+
+/* Styling for list items within 'subcategory-list' */
+.subcategory-list li {
+  margin: 5px 0;
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer p {
+  margin: 0;
+}
+
+/* Additional Styling for Links */
+.footer .digi {
+  color: #ea1a23;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.creator {
+  color: #fff;
+  text-decoration: none;
+}
+.creator:hover {
+  text-decoration: underline;
+}
