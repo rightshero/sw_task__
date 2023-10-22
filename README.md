@@ -1,48 +1,76 @@
-![alt text](https://rightshero.com/public/assets/pp-assets/images/rh-logo.png)
+# Rightshero Software Engineer Task Assessment
+This is a task for creating unlimited sub categories checkboxes from 2 basic categories checkboxes.
 
+## Table of Contents
+- [Task description](#task-description)
+- [Technologies](#technologies)
+- [Setup](#setup)
+- [Features](#features)
+- [DB design](#db-design)
+- [Demo](#demo)
 
-# Software Engineer Task Assessment
+## Task description
 
-This role will be part of the Rightshero software development team.
-
-As a software engineer you are a part of a small but very efficient and multi-tasking team. 
-
-The team is tasked with handling all the software aspects of our service.
-
-# The task
-The task will be a project contains one page have a 2 categories checkboxes
+The task will be a project contains one page having 2 checkboxes:
 - [ ] Category A
 - [ ] Category B
 
-Unlimited subcategories of parent category (if it is hard to achieve the unlimited levels, you can set 3 levels hard-coded)
-Should use Ajax
+and if you check one of them, the page will show you another 2 checkboxes related to the category you checked:
 
-## Example
-- [ ] Category A
-- [ ] Category B
-
-If user select “Category B”
-The system will create another 2 checkboxes with
+as example if you checked Category B, the page will show you:
 
 - [ ] SUB Category B1
 - [ ] SUB Category B2
 
-Selecting Sub Category B2 will create another 2 checkboxes
+and selecting the second sub category as example will create another 2 checkboxes under it:
 
 - [ ] SUB SUB Category B2-1
 - [ ] SUB SUB Category B2-2
- And so on
+
+and so on.
+
+**Also you can delete all categories and sub categories and start again.**
+
+## Technologies
+
+- **Django**: Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design.
+- **PostgreSQL**: PostgreSQL is a powerful, open source object-relational database system.
+- **Docker**: Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers.
+- **Docker Compose**: Compose is a tool for defining and running multi-container Docker applications.
 
 
-# Notes
-- We would be scoring for the below aspects of the assignment:
-- DB,Architecture /Code (preferred MVC pattern), Security, Git
-- You could use a framework to create the project from scratch (Laravel or Django).
-- You should use MySQL or Postgresql Databases.
-- Please use one table design in the database for all categories and subs.
-- The code should contain comments with important information.
+## Setup
 
-# Deliverables
-- The project should be ready with docker compose (web service + DB).
-- Once you're finished, submit a PR to this repo with your email in a commit message.
-- The email should be the same as your email in the CV/Resume.
+```bash
+# Clone the repo
+git clone https://github.com/yaaa3ser/sw_task.git
+cd sw_task
+```
+
+To run the project, you will need to have Docker and Docker Compose installed on your machine. Once you have installed the required dependencies, you can run the following command to start the web service and the database:
+
+```bash
+docker-compose up --build
+```
+you can access the web app at 'http://localhost:8000'
+
+
+## Features
+
+- [x] Create 2 categories checkboxes (Category A, Category B)
+- [x] Selecting one of them will show you another 2 checkboxes related to the category you checked and so on.
+- [x] Using postman to delete all categories and sub categories with the url 'http://localhost:8000/' and method 'DELETE'
+
+
+## DB design
+
+![DB design](./categories/Table.png)
+- **Category** table has 3 columns:
+    - **id**: primary key
+    - **name**: category name
+    - **parent**: foreign key to the same table to make the relation between categories and sub categories
+
+
+## Demo
+
+![Demo](./demo.gif)
