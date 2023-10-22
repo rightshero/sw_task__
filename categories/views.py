@@ -2,40 +2,44 @@ from django.shortcuts import render
 from django.views import View
 from django.http import JsonResponse
 from .models import Category
-from .utils import get_adjacency_list, create_default_categories, create_sub_categories, check_if_child_exists
-import json
+from .utils import get_adjacency_list, create_default_categories, create_sub_categories, check_if_child_exists, get_categories
 
 class CategoryView(View):
     def get(self, request):
-        if 'User-Agent' in request.headers and 'PostmanRuntime' in request.headers['User-Agent']:
-            # the request is from Postman, so I will return JsonResponse
-            return JsonResponse(json.loads(get_adjacency_list()))
+        """
+        first time, it will render the home page and then 
+        it will return the adjacency list of all categories in the database to construct the tree.
+        """
+        if request.headers.get('Content-Type') == 'application/json':
+            categories = get_categories()
+            return JsonResponse(get_adjacency_list(categories))
         else:
-            return render(request, 'home.html', {'data': get_adjacency_list()})
+            return render(request, 'home.html')
+
+
 
     def post(self, request):
         """
-        Creates two sub categories with names '1' and '2' respectively, and the given parent category.
+        1- know the current parent
+        2- check if it has children already
+        3- if it has children, return a message that it has already been clicked
+        4- if it doesn't have children, create two sub categories and return them
         """
-        
-        if 'User-Agent' in request.headers and 'PostmanRuntime' in request.headers['User-Agent']:
-            # the request is from Postman 
-            data = json.loads(request.body)
-            parent_id = data.get('id')
-        else:
-            parent_id = request.POST.get('parent')  
-        
+        parent_id = request.POST.get('parent')
         child_exists = check_if_child_exists(parent_id)
         if child_exists:
             return JsonResponse({"status": "already clicked"})
 
-        create_sub_categories(parent_id)
-        return JsonResponse({"status": "success"})
+        subcategories = create_sub_categories(parent_id)
+        subcategories = [{"id": subcategory.id, "name": subcategory.name} for subcategory in subcategories]
         
+        return JsonResponse({"status": "success", "subcategories": subcategories})
+
+
 
     def delete(self, request):
         """
-        Deletes all categories in the database and creates two default categories with names '1' and '2' respectively, and no parent category.
+        Deletes all categories in the database and creates two default categories.
         """
         try:
             Category.objects.all().delete()
