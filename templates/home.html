@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Categories</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css" rel="stylesheet" />
+    </head>
+
+    <body>
+        <div id="main"> </div>
+
+        <script>
+            // Use a Tree class to render the categories by using pre-order traversal
+            class Tree{
+                constructor(val) {
+                    this.val = val;
+                    this.left = null;
+                    this.right = null;
+                }
+            }
+
+            const BASE_URL = "http://localhost:8000/";         // Base URL for API requests
+            const rootDiv = document.getElementById('main');  // Root div element in the HTML
+            const xhr = new XMLHttpRequest();                // XMLHttpRequest object for making API requests
+
+
+            /**
+            * Makes a GET request to the specified URL and renders the tree data in the DOM.
+            * @param {string} url - The URL for the GET request.
+            */
+            function GET() {
+                xhr.open('GET', BASE_URL, false);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+
+                // Initialize the root node of the tree
+                let root = new Tree({ id: "None", name: "base" });
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        rootDiv.innerHTML = "";
+                        data = JSON.parse(xhr.responseText);
+                        // Construct and render the tree structure
+                        preOrderRender(rootDiv, buildTree(root));
+                    }
+                };
+                xhr.send();
+            }
+
+            /**
+            * Makes a POST request to update data for the specified parent ID.
+            * @param {string} url - The URL for the POST request.
+            * @param {string} parentId - The ID of the parent node to be updated.
+            */
+            function UPDATE(parentId) {
+                let formData = new FormData();
+                formData.append('parent', parentId);
+
+                xhr.open('POST', BASE_URL, false);
+                xhr.send(formData);
+            }
+
+            /**
+            * Constructs the tree structure recursively based on the provided parent node.
+            * @param {Object} parent - The parent node of the current tree.
+            * @returns {Object} - The constructed tree.
+            */
+            function buildTree(parent) {
+                // Base case: if no child data is available, return
+                if (!data[parent.val.id]) {
+                    return;
+                }
+
+                // Construct left and right child nodes recursively
+                if (data[parent.val.id].length !== 0) {
+                    parent.left = buildTree(new Tree({ "id": data[parent.val.id][0].id, "name": data[parent.val.id][0].name }));
+                    parent.right = buildTree(new Tree({ "id": data[parent.val.id][1].id, "name": data[parent.val.id][1].name }));
+                }
+                return parent;
+            }
+
+            /**
+            * Renders the tree data using pre-order traversal and creates checkbox elements for each node.
+            * @param {Object} parentContainer - The parent container where checkboxes should be appended.
+            * @param {Object} root - The root node of the tree.
+            */
+            function preOrderRender(parentContainer, root) {
+                if (root == null) {
+                    return;
+                }
+
+                // Check if the current node has children
+                const hasChild = Boolean(root.left || root.right);
+
+                // Build and append checkbox elements for the current node
+                const container = createCheckboxElement(root.val.id, root.val.name, parentContainer, hasChild);
+                container.addEventListener('click', function (e) {
+                    // Update data and reload when a leaf node is clicked
+                    if (!hasChild) {
+                        UPDATE(root.val.id);
+                        GET();
+                    }
+                });
+
+                // Recursively render left and right child nodes
+                preOrderRender(container, root.left);
+                preOrderRender(container, root.right);
+            }
+
+            /**
+            * Creates a checkbox element with the specified ID, name, and parent container.
+            * @param {string} id - The ID of the checkbox.
+            * @param {string} name - The name to be displayed next to the checkbox.
+            * @param {Object} parentContainer - The parent container where the checkbox should be appended.
+            * @param {boolean} hasChild - Indicates whether the checkbox node has children.
+            * @returns {Object} - The constructed container element.
+            */
+            function createCheckboxElement(id, name, parentContainer, hasChild) {
+                let container = document.createElement('div');
+                container.classList.add('sub-container', 'form-check');
+                container.id = id;
+
+                const input = document.createElement('input');
+                input.classList.add('form-check-input');
+                input.id = id;
+                input.setAttribute('type', 'checkbox');
+                input.setAttribute('value', id);
+
+                // Check the checkbox if the node has children
+                if (hasChild) {
+                    input.setAttribute('checked', true);
+                }
+
+                const label = document.createElement('label');
+                label.classList.add('form-check-label');
+                label.setAttribute('for', id);
+                label.textContent = name;
+
+                parentContainer.appendChild(container);
+
+                // Append checkbox and label to the container
+                if (id !== "None") {
+                    container.appendChild(input);
+                    container.appendChild(label);
+                }
+
+                return container;
+            }
+
+            // Initial function call to fetch and render data from the API
+            GET();
+
+        </script>
+    </body>
+</html>
