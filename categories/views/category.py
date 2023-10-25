@@ -1,6 +1,11 @@
 from django.http import JsonResponse
+from django.shortcuts import render
 from categories.models import Category
 from django.core.exceptions import ObjectDoesNotExist
+
+
+def category_selection_view(request):
+    return render(request, 'categories/categories.html')
 
 
 def get_subcategories(request, category_id):
