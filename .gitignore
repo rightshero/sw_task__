@@ -1,6 +1,4 @@
 db.sqlite3
 /venv/
 .idea
-/Dockerfile
-/docker-compose.yml
 __pycache__
