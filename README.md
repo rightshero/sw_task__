@@ -1,4 +1,9 @@
+# Note**
+No specific UI instructions were provided, so I implemented a simple frontend using Django templates.
+If there's a preference to use a different frontend technology like React with our backend serving as an API, I'm fully capable of making that transition.
+
 ![alt text](https://rightshero.com/public/assets/pp-assets/images/rh-logo.png)
+
 
 
 # Software Engineer Task Assessment
