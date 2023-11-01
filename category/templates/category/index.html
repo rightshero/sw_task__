@@ -1,0 +1,93 @@
+<!-- my_template.html -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Page</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index_style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'jquery-3.7.1.min.js' %}"></script>
+    
+
+    <script>
+
+
+        $(document).ready(function() {
+
+            
+
+    
+        
+            // When a checkbox is clicked
+            $("input[type='checkbox']").click(function(e) {
+               
+              
+          
+              // Check if the checkbox is checked
+              if ($(this).is(":checked")) {
+                // Get the ID of the category
+                var categoryId = $(this).attr("name");
+                
+                // Send an AJAX request to add the category to the database
+                $.ajax({
+                  url: "add/",
+                  type: "POST",
+                  data: {
+                    id: categoryId,
+                    is_checked: true,
+                    
+                    
+                    csrfmiddlewaretoken: "{{ csrf_token }}"
+                  },
+                  success: function(response) {
+                  
+                  },
+                  error: function(response) {
+                    alert("Error adding category!");
+                  }
+                  
+                });
+
+                
+                
+              }
+              
+            });
+          });
+          
+    </script>
+</head>
+<body class="m-5">
+    <h1>Categories Task</h1>
+    <div class="m-5 text-center" >
+<button class="mr-2" > <a class=" mr-2" id="a_style"style="text-decoration: none; color: black;"href="{% url 'category:delete_all' %}">Reset</a></button>
+    <button onclick="window.location.reload()" style="margin-left: 30px; ">Reload Page</button>
+    </div>
+
+    <form id="myForm" class="form-group" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+          {% load mptt_tags %}
+          
+        <ul id="category-list"class="no-bullets form-control">
+          {% recursetree categories %} 
+          <li class="form-text text-muted"><input type="checkbox" name="{{ node.id }}" {% if node.is_checked %}checked{% endif %}>{{ node.title }}</li>
+            {% if not node.is_leaf_node %}
+            <ul id="category-list"class="children no-bullets   p1-md-5">
+            {{ children }}
+          </ul>
+           
+
+            {% endif %}
+          {% endrecursetree  %} 
+{% comment %}          
+             {% for category in categories %}
+              <li><input type="checkbox" name="{{ category.id }}" {% if category.is_checked %}checked{% endif %}>{{ category.title }}</li>
+            {% endfor %}  {% endcomment %}
+          
+          </ul> 
+       
+    </form>
+</body>
+</html>

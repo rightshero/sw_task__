@@ -1,0 +1,33 @@
+version: "3.9"
+services:
+  app:
+    build: ./docker/django
+    volumes:
+      - .:/core
+    ports:
+      - 8000:8000
+    container_name: infinite_category_django
+    command: >
+      sh -c "wait-for-it && \
+        python manage.py migrate && \
+        python manage.py runserver 0.0.0.0:8000"
+
+    environment:
+      - DB_HOST=postgres
+      - DB_Name=category_task
+      - DB_USER=postgres
+      - DB_PASS=password
+   
+    
+  postgres:
+    build: ./docker/db
+    container_name: infinite_category_db
+    environment:
+      - POSTGRES_DB=category_task
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    
+   
+    
+
+
