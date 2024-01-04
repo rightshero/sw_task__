@@ -17,6 +17,13 @@ The task will be a project contains one page have a 2 categories checkboxes
 Unlimited subcategories of parent category (if it is hard to achieve the unlimited levels, you can set 3 levels hard-coded)
 Should use Ajax
 
+Also, a **AWS CloudFormation** template file for:
+- Launch a t2.micro or t3.micro EC2 instance
+- Create IAM role with admin privileges
+- Attach the IAM role to the EC2 instance created earlier
+- Deploy the project on the EC2 instance
+- The instance should be accessable via SSH, HTTP and HTTPS protocols/ports
+
 ## Example
 - [ ] Category A
 - [ ] Category B
@@ -42,7 +49,9 @@ Selecting Sub Category B2 will create another 2 checkboxes
 - Please use one table design in the database for all categories and subs.
 - The code should contain comments with important information.
 
+
 # Deliverables
 - The project should be ready with docker compose (web service + DB).
+- The **AWS CloudFormation** template file.
 - Once you're finished, submit a PR to this repo with your email in a commit message.
 - The email should be the same as your email in the CV/Resume.
