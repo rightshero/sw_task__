@@ -10,10 +10,10 @@ As a software engineer you are a part of a small but very efficient and multi-ta
 The team is tasked with handling all the software aspects of our service.
 
 # The task
-The task will be:
+The task will be a project and **AWS CloudFormation** template:
 
-## A project contains:
-one page have a 2 categories checkboxes
+## [1] The project:
+A project contains one page have a 2 categories checkboxes
 [ ] Category A
 [ ] Category B
 
@@ -37,7 +37,8 @@ Selecting Sub Category B2 will create another 2 checkboxes
  And so on
 
 
-## An AWS CloudFormation template YAML file for:
+## [2] AWS CloudFormation
+An AWS CloudFormation template YAML file for:
 - Launch a t2.micro or t3.micro EC2 instance
 - Create IAM role with admin privileges
 - Attach the IAM role to the EC2 instance created earlier
