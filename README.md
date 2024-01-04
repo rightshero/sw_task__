@@ -14,8 +14,9 @@ The task will be a project and **AWS CloudFormation** template:
 
 ## [1] The project:
 A project contains one page have a 2 categories checkboxes
-[ ] Category A
-[ ] Category B
+
+- [ ] Category A
+- [ ] Category B
 
 Unlimited subcategories of parent category (if it is hard to achieve the unlimited levels, you can set 3 levels hard-coded)
 Should use Ajax.
@@ -59,6 +60,6 @@ An AWS CloudFormation template YAML file for:
 
 # Deliverables
 - The project should be ready with docker compose (web service + DB).
-- The **AWS CloudFormation** template file.
+- The **AWS CloudFormation** template YAML file.
 - Once you're finished, submit a PR to this repo with your email in a commit message.
 - The email should be the same as your email in the CV/Resume.
