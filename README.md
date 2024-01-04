@@ -10,7 +10,7 @@ As a software engineer you are a part of a small but very efficient and multi-ta
 The team is tasked with handling all the software aspects of our service.
 
 # The task
-The task will be a project and **AWS CloudFormation** template:
+The task will be a **project** and **AWS CloudFormation** template:
 
 ## [1] The project:
 A project contains one page have a 2 categories checkboxes
