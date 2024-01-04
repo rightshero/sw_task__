@@ -10,19 +10,13 @@ As a software engineer you are a part of a small but very efficient and multi-ta
 The team is tasked with handling all the software aspects of our service.
 
 # The task
-The task will be a project contains one page have a 2 categories checkboxes
-- [ ] Category A
-- [ ] Category B
+The task will be:
+- A project contains one page have a 2 categories checkboxes
+[ ] Category A
+[ ] Category B
 
 Unlimited subcategories of parent category (if it is hard to achieve the unlimited levels, you can set 3 levels hard-coded)
-Should use Ajax
-
-Also, a **AWS CloudFormation** template file for:
-- Launch a t2.micro or t3.micro EC2 instance
-- Create IAM role with admin privileges
-- Attach the IAM role to the EC2 instance created earlier
-- Deploy the project on the EC2 instance
-- The instance should be accessable via SSH, HTTP and HTTPS protocols/ports
+Should use Ajax.
 
 ## Example
 - [ ] Category A
@@ -41,6 +35,14 @@ Selecting Sub Category B2 will create another 2 checkboxes
  And so on
 
 
+## Also, an AWS CloudFormation template YAML file for:
+- Launch a t2.micro or t3.micro EC2 instance
+- Create IAM role with admin privileges
+- Attach the IAM role to the EC2 instance created earlier
+- Deploy the project on the EC2 instance
+- The instance should be accessable via SSH, HTTP and HTTPS protocols/ports
+
+
 # Notes
 - We would be scoring for the below aspects of the assignment:
 - DB,Architecture /Code (preferred MVC pattern), Security, Git
@@ -48,6 +50,8 @@ Selecting Sub Category B2 will create another 2 checkboxes
 - You should use MySQL or Postgresql Databases.
 - Please use one table design in the database for all categories and subs.
 - The code should contain comments with important information.
+- README file for run the project locally.
+- The **AWS CloudFormation** template file.
 
 
 # Deliverables
