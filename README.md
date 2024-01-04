@@ -11,14 +11,16 @@ The team is tasked with handling all the software aspects of our service.
 
 # The task
 The task will be:
-- A project contains one page have a 2 categories checkboxes
+
+## A project contains:
+one page have a 2 categories checkboxes
 [ ] Category A
 [ ] Category B
 
 Unlimited subcategories of parent category (if it is hard to achieve the unlimited levels, you can set 3 levels hard-coded)
 Should use Ajax.
 
-## Example
+### Example
 - [ ] Category A
 - [ ] Category B
 
@@ -35,7 +37,7 @@ Selecting Sub Category B2 will create another 2 checkboxes
  And so on
 
 
-## Also, an AWS CloudFormation template YAML file for:
+## An AWS CloudFormation template YAML file for:
 - Launch a t2.micro or t3.micro EC2 instance
 - Create IAM role with admin privileges
 - Attach the IAM role to the EC2 instance created earlier
